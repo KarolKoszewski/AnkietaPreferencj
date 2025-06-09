@@ -9,14 +9,37 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
-
+    
+    private string userName = "";
+    private string zainteresowania = "";
+    
     private void PotwierdzDane(object? sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        userName = NameTextBox.Text ?? "";
+        zainteresowania = (CategoryComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "";
     }
     
     private void Podsumuj(object? sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        int licznikTak = 0;
+        if(Q1CheckBox.IsChecked == true)
+        {
+            licznikTak++;
+        }
+
+        if (Q2CheckBox.IsChecked == true)
+        {
+            licznikTak++;
+        }
+
+        if (Q3CheckBox.IsChecked == true)
+        {
+            licznikTak++;
+        }
+
+        tekstPodsumujacy.Text = $"Użytkownika: {userName}\n" +
+                                $"Kategoria: {zainteresowania}\n" +
+                                $"Odpowiedzi Tak: {licznikTak}\n";
+        Podsumowanie.IsVisible = true;
     }
 }
